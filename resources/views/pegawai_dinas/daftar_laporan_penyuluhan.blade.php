@@ -30,7 +30,7 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Products <span class="table-project-n">Data</span> Table</h1>
+                                    <h1>Daftar <span class="table-project-n">Laporan</span> Penyuluhan</h1>
                                 </div>
                             </div>
                             <div class="sparkline13-graph">
@@ -38,31 +38,26 @@
                                     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" >
                                         <thead>
                                             <tr>
-                                                <th data-field="id">No.</th>
-                                                <th data-field="name">Product Title</th>
-                                                <th data-field="company">Stock</th>
-                                                <th data-field="price">Price</th>
-                                                <th data-field="date">Date</th>
+                                                <th data-field="no">No.</th>
+                                                <th data-field="name">Penyuluh</th>
+                                                <th data-field="company">Tema</th>
                                                 <th data-field="task">Status</th>
-                                                <th data-field="email">Total Sales</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            @for($i = 1; $i < 51; $i++)
+                                            <?php $no = 1 ?>
+
+                                            @foreach($laporan_penyuluhan as $laporan)
                                             <tr>
-                                                <td>{{$i}}</td>
-                                                <td>Product Title</td>
-                                                <td>Out Of Stock</td>
-                                                <td>$54</td>
-                                                <td>Jul 14, 2017</td>
-                                                <td>Active</td>
-                                                <td>$700</td>
-                                                <td class="datatable-ct"><a href="/pegawai_dinas/detail_laporan_penyuluhan" class="btn btn-primary">lihat</a></td>
-                                                </td>
+                                                <td>{{$no++}}</td>
+                                                <td>{{$laporan->user->nama}}</td>
+                                                <td>{{$laporan->tema}}</td>
+                                                <td>{{$laporan->status}}</td>
+                                                <td class="datatable-ct"><a href="/pegawai_dinas/detail_laporan_penyuluhan/{{$laporan->id}}" class="btn btn-primary">lihat</a></td>
                                             </tr>
-                                            @endfor
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -51,6 +51,8 @@
         ============================================ -->
     <link rel="stylesheet" href="/template/css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="/template/css/calendar/fullcalendar.print.min.css">
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     
     
     @yield('css_custom')
@@ -77,9 +79,9 @@
                         <li>
                             <a title="Profil" href="/bpp/profil" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Profil</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a title="Notifikasi" href="/bpp/notifikasi" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Notifikasi</span></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a title="Daftar Laporan" href="/bpp/daftar_laporan_penyuluhan" aria-expanded="false"><i class="fa fa-file-text sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Laporan</span></a>
                         </li>
@@ -89,7 +91,7 @@
                         <li>
                             <a title="Daftar Surat Tugas" href="/bpp/daftar_surat_tugas" aria-expanded="false"><i class="fa fa-briefcase sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Surat Tugas</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a title="daftar Penyuluh" href="/bpp/daftar_penyuluh_lapangan" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">daftar Penyuluh</span></a>
                         </li>
                         <li>
@@ -97,7 +99,7 @@
                         </li>
                         <li>
                             <a title="daftar Nagari" href="/bpp/daftar_nagari" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">daftar Nagari</span></a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -270,6 +272,21 @@
         ============================================ -->
     <script src="/template/js/metisMenu/metisMenu.min.js"></script>
     <script src="/template/js/metisMenu/metisMenu-active.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+      @if(Session::has('message'))
+        var type="{{Session::get('alert-type','success')}}"
+      
+        switch(type){
+          case 'success':
+           toastr.info("{{ Session::get('message') }}");
+           break;
+        case 'error':
+          toastr.error("{{ Session::get('message') }}");
+          break;
+        }
+      @endif
+    </script>
     @yield('js_custom') 
 </body>
 

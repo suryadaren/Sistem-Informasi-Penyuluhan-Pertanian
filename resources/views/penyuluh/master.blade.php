@@ -76,10 +76,10 @@
                         <li>
                             <a title="Profil" href="/penyuluh/profil" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Profil</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a title="Notifikasi" href="/penyuluh/notifikasi" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Notifikasi</span></a>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="has-arrow" href="index.html">
                                    <i class="fa big-icon fa-calendar icon-wrap"></i>
                                    <span class="mini-click-non">Jadwal Penyuluhan</span>
@@ -88,7 +88,7 @@
                                 <li><a title="Masukan Jadwal" href="/penyuluh/masukan_jadwal_penyuluhan"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Masukan Jadwal</span></a></li>
                                 <li><a title="Lihat Jadwal" href="/penyuluh/lihat_jadwal_penyuluhan"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Lihat Jadwal</span></a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="fa big-icon fa-file-text icon-wrap"></i> <span class="mini-click-non">Laporan Penyuluhan</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -109,9 +109,9 @@
                         <li>
                             <a title="Daftar Proposal Dana" href="/penyuluh/daftar_proposal_dana" aria-expanded="false"><i class="fa fa-dollar sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Proposal Dana</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a title="daftar Kelompok Tani" href="/penyuluh/daftar_kelompok_tani" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">daftar Kelompok Tani</span></a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>

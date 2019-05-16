@@ -30,7 +30,7 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Products <span class="table-project-n">Data</span> Table</h1>
+                                    <h1>Pilih Draft Programa yang akan di buatkan surat tugas</h1>
                                 </div>
                             </div>
                             <div class="sparkline13-graph">
@@ -38,26 +38,28 @@
                                     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" >
                                         <thead>
                                             <tr>
-                                                <th data-field="id">No.</th>
+                                                <th data-field="no">No.</th>
                                                 <th data-field="name">Penyuluh</th>
                                                 <th data-field="company">Desa</th>
                                                 <th data-field="price">Kecamatan</th>
-                                                <th data-field="date">Status</th>
-                                                <th data-field="task">Action</th>
+                                                <th data-field="date">Tanggal</th>
+                                                <th data-field="task">Status</th>
+                                                <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                             <?php $no = 1; ?>
 
-                                            @foreach($surat_tugas as $surat)
+                                            @foreach($draft_programa as $draft)
                                             <tr>
                                                 <td>{{$no++}}</td>
-                                                <td>{{$surat->draft_programa->user->nama}}</td>
-                                                <td>{{$surat->draft_programa->user->desa}}</td>
-                                                <td>{{$surat->draft_programa->user->kecamatan}}</td>
-                                                <td>{{$surat->status}}</td>
-                                                <td class="datatable-ct"><a href="/pegawai_dinas/detail_surat_tugas/{{$surat->id}}" class="btn btn-primary">lihat</a></td>
+                                                <td>{{$draft->user->nama}}</td>
+                                                <td>{{$draft->user->desa}}</td>
+                                                <td>{{$draft->user->kecamatan}}</td>
+                                                <td>{{$draft->created_at}}</td>
+                                                <td>{{$draft->status}}</td>
+                                                <td class="datatable-ct"><a href="/pegawai_dinas/buat_surat_tugas/{{$draft->id}}" class="btn btn-primary">Pilih</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

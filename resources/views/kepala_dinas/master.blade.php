@@ -74,9 +74,9 @@
                         <li>
                             <a title="Profil" href="/kepala_dinas/profil" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Profil</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a title="Notifikasi" href="/kepala_dinas/notifikasi" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Notifikasi</span></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a title="Daftar Surat Tugas" href="/kepala_dinas/daftar_surat_tugas" aria-expanded="false"><i class="fa fa-briefcase sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Surat Tugas</span></a>
                         </li>

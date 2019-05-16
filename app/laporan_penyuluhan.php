@@ -17,4 +17,8 @@ class laporan_penyuluhan extends Authenticatable
     	return $this->belongsTo(user::class,"penyuluh_id");
     }
 
+    public function process_laporan_penyuluhan(){
+    	return $this->hasOne('App\process_laporan_penyuluhan');
+    }
+
 }

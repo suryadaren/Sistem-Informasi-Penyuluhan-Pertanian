@@ -1,4 +1,4 @@
-@extends('penyuluh.master')
+@extends('pegawai_dinas.master')
 @section('css_custom')
    <!-- summernote CSS
         ============================================ -->
@@ -24,7 +24,7 @@
                         <div class="sparkline10-list mt-b-30">
                             <div class="sparkline10-hd">
                                 <div class="main-sparkline10-hd">
-                                    <h1>Form Laporan Kegiatan Penyuluhan Pertanian</h1>
+                                    <h1>Form Surat Perintah Tugas</h1>
                                 </div>
                             </div>
                             <div class="sparkline10-graph">
@@ -32,25 +32,13 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="basic-login-inner inline-basic-form">
-                                                <form action="/penyuluh/input_laporan_penyuluhan" method="post" enctype="multipart/form-data">
+                                                <form action="/pegawai_dinas/input_surat_tugas/{{$draft->id}}" method="post" enctype="multipart/form-data">
                                                     {{@csrf_field()}}
                                                     <br>
                                                     <div class="form-group-inner">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <label>Tema Penyuluhan</label>
-                                                                <input name="tema" type="text" class="form-control basic-ele-mg-b-10 responsive-mg-b-10" placeholder="ex :  Penanganan Pasca Panen sebagai bahan baku olahan" value="{{old('tema')}}" />
-                                                                  @if($errors->has('tema'))
-                                                                    <div class="alert alert-danger" role="alert"> {{$errors->first('tema')}} </div>
-                                                                  @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <br>
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <label>Konten penyuluhan (maksimal 1000 kata)</label>
+                                                            <label>Konten Surat tugas (maksimal 1000 kata)</label>
                                                              <textarea name="content" class="f1-content form-control" id="f1-content" >{{old('content')}}</textarea>
                                                               @if($errors->has('content'))
                                                                 <div class="alert alert-danger" role="alert"> {{$errors->first('content')}} </div>
@@ -70,31 +58,6 @@
                                                                   @if($errors->has('berkas'))
                                                                     <div class="alert alert-danger" role="alert"> {{$errors->first('berkas')}} </div>
                                                                   @endif
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <br>
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <label>Foto Kegiatan penyuluhan (jpg,jpeg,png)</label>
-                                                            <div class="input-group control-group increment" >
-                                                              <input type="file" name="foto[]" class="form-control">
-                                                                  @if($errors->has('foto'))
-                                                                    <div class="alert alert-danger" role="alert"> {{$errors->first('foto')}} </div>
-                                                                  @endif
-                                                              <div class="input-group-btn"> 
-                                                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-                                                              </div>
-                                                            </div>
-                                                            <div class="clone hide">
-                                                              <div class="control-group input-group" style="margin-top:10px">
-                                                                <input type="file" name="foto[]" class="form-control">
-                                                                <div class="input-group-btn"> 
-                                                                  <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-                                                                </div>
-                                                              </div>
                                                             </div>
                                                             </div>
                                                         </div>
@@ -151,22 +114,6 @@
     <!-- main JS
         ============================================ -->
     <script src="/template/js/main.js"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-
-          $(".btn-success").click(function(){ 
-              var html = $(".clone").html();
-              $(".increment").after(html);
-          });
-
-          $("body").on("click",".btn-danger",function(){ 
-              $(this).parents(".control-group").remove();
-          });
-
-        });
-
-    </script>
     <script>
         document.getElementById('f1-content').addEventListener('input', function () {
             var text = this.value,

@@ -16,4 +16,12 @@ class draft_programa extends Authenticatable
     public function user(){
     	return $this->belongsTo(user::class,"penyuluh_id");
     }
+
+    public function process_draft_programa(){
+    	return $this->hasOne('App\process_draft_programa');
+    }
+
+    public function surat_tugas(){
+        return $this->hasOne('App\surat_tugas');
+    }
 }

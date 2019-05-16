@@ -1,9 +1,6 @@
 @extends('pegawai_dinas.master')
 @section('css_custom')
 
-<!-- modals CSS
-        ============================================ -->
-    <link rel="stylesheet" href="/template/css/modals.css">
     <!-- style CSS
         ============================================ -->
     <link rel="stylesheet" href="/template/style.css">
@@ -27,8 +24,8 @@
 
                                 <div class="p-xs h4">
                                     <small class="pull-right">
-                                            08:26 PM (16 hours ago)
-                                        </small> Email view
+                                            {{$draft->created_at}}
+                                        </small> Draft Programa
 
                                 </div>
                             </div>
@@ -36,39 +33,107 @@
                                 <div class="p-m custom-address-mailbox">
 
                                     <div>
-                                        <span class="font-extra-bold">Subject: </span> Lorem Ipsum has been the industry's standard dummy text ever
+                                        <span class="font-extra-bold">Penyuluh: </span> {{$draft->user->nama}}
                                     </div>
                                     <div>
-                                        <span class="font-extra-bold">From: </span>
-                                        <a href="#">example.@email.com</a>
+                                        <span class="font-extra-bold">Desa: </span> {{$draft->user->desa}}
                                     </div>
                                     <div>
-                                        <span class="font-extra-bold">Date: </span> 14.10.2016
+                                        <span class="font-extra-bold">Kecamatan: </span> {{$draft->user->kecamatan}}
+                                    </div>
+                                    <div>
+                                        <span class="font-extra-bold">Dana dibutuhkan: </span>Rp. {{$draft->total_dana}},-
+                                    </div>
+                                    <div class="text-danger">
+                                        <span class="font-extra-bold">Status: </span> {{$draft->status}}
+                                    </div>
+                                    <div>
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#checklist"><i class="fa fa-check"></i> Lihat Checklist kelayakan</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body panel-csm">
                                 <div>
-                                    <h4>Hello Jonathan! </h4>
+                                    <h4>Latar Belakang</h4>
 
-                                    <p>Dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the dustrys</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                                        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                                        containing Lorem Ipsum passages, and more
-                                        <br/>
-                                        <br/>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
-                                        a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. recently with.</p>
-
-                                    <p>Mark Smith
-                                    </p>
+                                    <p>{{$draft->latar_belakang}}</p>
                                 </div>
                             </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Tujuan</h4>
+
+                                    <p>{{$draft->tujuan}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Manfaat</h4>
+
+                                    <p>{{$draft->manfaat}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Biofisik</h4>
+
+                                    <p>{{$draft->biofisik}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Sumber Daya Manusia</h4>
+
+                                    <p>{{$draft->sdm}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Kelembagaan dan Sarana Usaha Tani</h4>
+
+                                    <p>{{$draft->usaha_tani}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Tujuan Bersifat Perilaku</h4>
+
+                                    <p>{{$draft->tujuan_perilaku}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Tujuan Bersifat Non Perilaku</h4>
+
+                                    <p>{{$draft->tujuan_non_perilaku}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Masalah Bersifat Perilaku</h4>
+
+                                    <p>{{$draft->masalah_perilaku}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Masalah Bersifat Non Perilaku Belakang</h4>
+
+                                    <p>{{$draft->masalah_non_perilaku}}</p>
+                                </div>
+                            </div>
+                            <br>
 
                             <div class="border-bottom border-left border-right bg-white mg-tb-15">
-                                <p class="m-b-md">
-                                    <span><i class="fa fa-paperclip"></i> 3 attachments - </span>
-                                    <a href="#" class="btn btn-default btn-xs">Download all in zip format <i class="fa fa-file-zip-o"></i> </a>
-                                </p>
-
                                 <div>
                                     <div class="row">
                                         <div class="col-sm-3 col-md-3 col-sm-3 col-xs-12">
@@ -76,28 +141,8 @@
                                                 <div class="panel-body file-body incon-ctn-view">
                                                     <i class="fa fa-file-pdf-o text-info"></i>
                                                 </div>
-                                                <div class="panel-footer">
-                                                    <a href="#">Document_2016.doc</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="hpanel">
-                                                <div class="panel-body file-body incon-ctn-view">
-                                                    <i class="fa fa-file-audio-o text-warning"></i>
-                                                </div>
-                                                <div class="panel-footer">
-                                                    <a href="#">Audio_2016.doc</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="hpanel">
-                                                <div class="panel-body file-body incon-ctn-view">
-                                                    <i class="fa fa-file-excel-o text-success"></i>
-                                                </div>
-                                                <div class="panel-footer">
-                                                    <a href="#">Sheets_2016.doc</a>
+                                                <div class="panel-footer text-center">
+                                                    <a href="{{Storage::url($draft->berkas)}}" download>Download Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,11 +150,10 @@
 
                                 </div>
                             </div>
-
+                            <br>
                             <div class="panel-footer text-right">
                                 <div class="btn-group">
-                                    <button class="btn btn-danger" data-toggle="modal" data-target="#DangerModalhdbgcl"><i class="fa fa-times"></i> Tolak</button>
-                                    <button class="btn btn-primary"  data-toggle="modal" data-target="#PrimaryModalhdbgcl"><i class="fa fa-check"></i> Terima</button>
+                                    <a href="/pegawai_dinas/process_draft/{{$draft->id}}" class="btn btn-primary">Process</a>
                                 </div>
                             </div>
                         </div>
@@ -117,63 +161,124 @@
                 </div>
             </div>
         </div>
-        <!-- tabs End-->
-
-        <div id="PrimaryModalhdbgcl" class="modal modal-adminpro-general default-popup-PrimaryModal fade" role="dialog">
+        <div id="checklist" class="modal modal-adminpro-general default-popup-PrimaryModal fade" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header header-color-modal bg-color-1">
-                        <h4 class="modal-title">Terima berkas</h4>
-                    </div>
-                    <div class="modal-body" style="text-align: left">
-                        <h4>ceklis form yang sudah lengkap</h4>
-                        <div class="checkbox">
-                          <label><input type="checkbox" value="">Pendahuluan</label>
+                    <div class="modal-content">
+                        <div class="modal-header header-color-modal bg-color-1">
+                            <h4 class="modal-title">Checklist kelayakan</h4>
                         </div>
-                        <div class="checkbox">
-                          <label><input type="checkbox" value="">Keadaan</label>
-                        </div>
-                        <div class="checkbox">
-                          <label><input type="checkbox" value="">Tujuan</label>
-                        </div>
-                        <div class="checkbox">
-                          <label><input type="checkbox" value="">Permasalahan</label>
-                        </div>
-                        <div class="checkbox">
-                          <label><input type="checkbox" value="">Berkas</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">Berkas Surat tugas</label>
-                            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                          </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a data-dismiss="modal" href="#">Cancel</a>
-                        <a href="#">Process</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <div class="modal-body" style="text-align: left">
+                            @if($draft->process_draft_programa)
+                            <table>
+                                <tr>
+                                    <th style="padding: 5px">Ceklis Kelayakan</th>
+                                    <th style="padding: 5px">Verifikasi </th>
+                                    <th style="padding: 5px"> Penjelasan</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Pendahuluan</h5>
+                                        <p>Pendahuluan di lengkapi dengan latar belakang, tujuan dan manfat. <br>
+                                        latar belakang <br>
+                                        Latar belakang, menjelaskan munculnya masalah atau pertanyaan penelitian yang merupakan inferensi atau pengambilan kesimpulan dari fakta-fakta pendukung yang terdapat di draft programa sebelumnya atau di lapangan (misalnya hasil pengamata atau wawancara). Latar belakang harus bisa menunjukkan mengapa permasalahan yang diangkat dianggap penting. <br>
+                                        tujuan <br>
+                                        Tujuan, dituliskan dalam kalimat pernyataan yang sederhana dan jelas sesuai dengan masalah penelitian dan hasil yang ingin dicapai. <br>
 
-        <div id="DangerModalhdbgcl" class="modal modal-adminpro-general FullColor-popup-DangerModal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header header-color-modal bg-color-4">
-                        <h4 class="modal-title">Tolak berkas</h4>
-                    </div>
-                    <div class="modal-body" style="text-align: left">
-                        <h4>Pesan :</h4>
-                        <div class="form-group">
-                            <label class="sr-only" for="f1-latar-belakang">Maksimal 500 kata</label>
-                            <textarea name="f1-latar-belakang" placeholder="Maksimal 500 kata" 
-                            class="f1-latar-belakang form-control" id="f1-latar-belakang" required></textarea>
+                                        manfaat <br>
+                                        Manfaat, menuliskan kontribusi skripsi terhadap ruang lingkup yang lebih dan/atau terhadap para pemangku kepentingan (stakeholders).</p>
+                                    </td>
+                                   
+                                    <td>
+                                        @if($draft->process_draft_programa->status_pendahuluan)
+                                            <span class="fa fa-check text-primary"></span>
+                                        @else
+                                            <span class="fa fa-times text-danger"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p>{{$draft->process_draft_programa->des_pendahuluan}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Keadaan</h5>
+                                        <p>Dilengkapi dengan data biofisik, sumber daya manusia, dan kelembagaan usaha tani <br> 
+                                        Keadaan, menuliskan keadaan atau kondisi yang ada pada target penelitian baik secara umum atau khusus.</p>
+                                    </td>
+                                   
+                                    <td>
+                                        @if($draft->process_draft_programa->status_keadaan)
+                                            <span class="fa fa-check text-primary"></span>
+                                        @else
+                                            <span class="fa fa-times text-danger"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p>{{$draft->process_draft_programa->des_keadaan}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Tujuan</h5>
+                                        <p>Dilengkapi dengan data tujuan bersifat perilaku dan tujuan besifat non perilaku<br> 
+                                        Tujuan, langkah pertama dalam pencapaian dari dilakukannya penelitian. Berupa target spesifik atau khusus. Penulisan indikasi ke arah mana atau data informasi yang dicari dari penelitian ini, dirumuskan dalam bentuk pernyataan yang konkret, dapat diamati dan diukur.</p>
+                                    </td>
+                                   
+                                    <td>
+                                        @if($draft->process_draft_programa->status_tujuan)
+                                            <span class="fa fa-check text-primary"></span>
+                                        @else
+                                            <span class="fa fa-times text-danger"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p>{{$draft->process_draft_programa->des_tujuan}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Permasalahan</h5>
+                                        <p>Dilengkapi dengan data permasalahan bersifat perilaku, permasalahan besifat non perilaku, dan jumlah dana yang di butuhkan<br> 
+                                        Tujuan, Menuliskan kesenjangan antara harapan dan kenyataan.menuliskan kesenjangan dari apa yang seharusnya  dan apa yang ada dalam kenyataan.</p>
+                                    </td>
+                                   
+                                    <td>
+                                        @if($draft->process_draft_programa->status_permasalahan)
+                                            <span class="fa fa-check text-primary"></span>
+                                        @else
+                                            <span class="fa fa-times text-danger"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p>{{$draft->process_draft_programa->des_permasalahan}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Berkas Draft programa</h5>
+                                        <p>Berkas Draft Programa harus berformat pdf atau docx</p>
+                                    </td>
+                                   
+                                    <td>
+                                        @if($draft->process_draft_programa->status_berkas)
+                                            <span class="fa fa-check text-primary"></span>
+                                        @else
+                                            <span class="fa fa-times text-danger"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p>{{$draft->process_draft_programa->des_berkas}}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            @else
+                                <p>Belum Di periksa</p>
+                            @endif
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" data-dismiss="modal">tutup</button>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <a data-dismiss="modal" href="#">Cancel</a>
-                        <a href="#">Process</a>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- tabs End-->

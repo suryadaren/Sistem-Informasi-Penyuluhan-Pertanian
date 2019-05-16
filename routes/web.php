@@ -37,10 +37,14 @@ Route::get('/bpp/lihat_notifikasi','BppController@lihat_notifikasi');
 
 Route::get('/bpp/daftar_laporan_penyuluhan','BppController@daftar_laporan_penyuluhan');
 Route::get('/bpp/detail_laporan_penyuluhan/{id}','BppController@detail_laporan_penyuluhan');
+Route::get('/bpp/process/{id}','BppController@process_laporan_penyuluhan');
+Route::put('/bpp/input_process/{id}','BppController@input_process_laporan_penyuluhan');
 Route::put('/bpp/setujui_laporan/{id}','BppController@setujui_laporan');
 
 Route::get('/bpp/daftar_draft_programa','BppController@daftar_draft_programa');
-Route::get('/bpp/detail_draft_programa','BppController@detail_draft_programa');
+Route::get('/bpp/detail_draft_programa/{id}','BppController@detail_draft_programa');
+Route::get('/bpp/process_draft/{id}','BppController@process_draft_programa');
+Route::put('/bpp/input_process_draft/{id}','BppController@input_process_draft_programa');
 
 Route::get('/bpp/daftar_surat_tugas','BppController@daftar_surat_tugas');
 Route::get('/bpp/detail_surat_tugas','BppController@detail_surat_tugas');
@@ -59,12 +63,23 @@ Route::put('/pegawai_dinas/ubah_data/{id}','PegawaiDinasController@ubah_data');
 
 Route::get('/pegawai_dinas/notifikasi','PegawaiDinasController@notifikasi');
 Route::get('/pegawai_dinas/lihat_notifikasi','PegawaiDinasController@lihat_notifikasi');
+
 Route::get('/pegawai_dinas/daftar_laporan_penyuluhan','PegawaiDinasController@daftar_laporan_penyuluhan');
-Route::get('/pegawai_dinas/detail_laporan_penyuluhan','PegawaiDinasController@detail_laporan_penyuluhan');
+Route::get('/pegawai_dinas/detail_laporan_penyuluhan/{id}','PegawaiDinasController@detail_laporan_penyuluhan');
+Route::get('/pegawai_dinas/process/{id}','PegawaiDinasController@process_laporan_penyuluhan');
+Route::put('/pegawai_dinas/input_process/{id}','PegawaiDinasController@input_process_laporan_penyuluhan');
+
 Route::get('/pegawai_dinas/daftar_draft_programa','PegawaiDinasController@daftar_draft_programa');
-Route::get('/pegawai_dinas/detail_draft_programa','PegawaiDinasController@detail_draft_programa');
+Route::get('/pegawai_dinas/detail_draft_programa/{id}','PegawaiDinasController@detail_draft_programa');
+Route::get('/pegawai_dinas/process_draft/{id}','PegawaiDinasController@process_draft_programa');
+Route::put('/pegawai_dinas/input_process_draft/{id}','PegawaiDinasController@input_process_draft_programa');
+
 Route::get('/pegawai_dinas/daftar_surat_tugas','PegawaiDinasController@daftar_surat_tugas');
-Route::get('/pegawai_dinas/detail_surat_tugas','PegawaiDinasController@detail_surat_tugas');
+Route::get('/pegawai_dinas/pilih_draft_surat','PegawaiDinasController@pilih_draft_surat');
+Route::get('/pegawai_dinas/buat_surat_tugas/{id}','PegawaiDinasController@buat_surat_tugas');
+Route::post('/pegawai_dinas/input_surat_tugas/{id}','PegawaiDinasController@input_surat_tugas');
+Route::get('/pegawai_dinas/detail_surat_tugas/{id}','PegawaiDinasController@detail_surat_tugas');
+
 Route::get('/pegawai_dinas/buat_proposal_dana','PegawaiDinasController@buat_proposal_dana');
 Route::get('/pegawai_dinas/daftar_proposal_dana','PegawaiDinasController@daftar_proposal_dana');
 Route::get('/pegawai_dinas/detail_proposal_dana','PegawaiDinasController@detail_proposal_dana');

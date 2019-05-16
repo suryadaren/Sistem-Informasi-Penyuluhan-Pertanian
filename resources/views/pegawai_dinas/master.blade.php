@@ -51,6 +51,7 @@
         ============================================ -->
     <link rel="stylesheet" href="/template/css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="/template/css/calendar/fullcalendar.print.min.css">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     
     
     @yield('css_custom')
@@ -74,9 +75,9 @@
                         <li>
                             <a title="Profil" href="/pegawai_dinas/profil" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Profil</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a title="Notifikasi" href="/pegawai_dinas/notifikasi" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Notifikasi</span></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a title="Daftar Laporan" href="/pegawai_dinas/daftar_laporan_penyuluhan" aria-expanded="false"><i class="fa fa-file-text sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Laporan</span></a>
                         </li>
@@ -84,7 +85,14 @@
                             <a title="Daftar Draft" href="/pegawai_dinas/daftar_draft_programa" aria-expanded="false"><i class="fa fa-desktop sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Draft</span></a>
                         </li>
                         <li>
-                            <a title="Daftar Surat Tugas" href="/pegawai_dinas/daftar_surat_tugas" aria-expanded="false"><i class="fa fa-briefcase sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Surat Tugas</span></a>
+                            <a class="has-arrow" href="index.html">
+                                   <i class="fa big-icon fa-briefcase icon-wrap"></i>
+                                   <span class="mini-click-non">Surat Tugas</span>
+                                </a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Buat Proposal Dana" href="/pegawai_dinas/pilih_draft_surat"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Buat Surat Tugas</span></a></li>
+                                <li><a title="Daftar Proposal Dana" href="/pegawai_dinas/daftar_surat_tugas"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Surat Tugas</span></a></li>
+                            </ul>
                         </li>
                         <li>
                             <a class="has-arrow" href="index.html">
@@ -96,7 +104,7 @@
                                 <li><a title="Daftar Proposal Dana" href="/pegawai_dinas/daftar_proposal_dana"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Proposal Dana</span></a></li>
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a title="daftar Kelompok Tani" href="/pegawai_dinas/daftar_kelompok_tani" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">daftar Kelompok Tani</span></a>
                         </li>
                         <li>
@@ -110,7 +118,7 @@
                         </li>
                         <li>
                             <a title="daftar Kecamatan" href="/pegawai_dinas/daftar_kecamatan" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">daftar Kecamatan</span></a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -283,6 +291,21 @@
         ============================================ -->
     <script src="/template/js/metisMenu/metisMenu.min.js"></script>
     <script src="/template/js/metisMenu/metisMenu-active.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+      @if(Session::has('message'))
+        var type="{{Session::get('alert-type','success')}}"
+      
+        switch(type){
+          case 'success':
+           toastr.info("{{ Session::get('message') }}");
+           break;
+        case 'error':
+          toastr.error("{{ Session::get('message') }}");
+          break;
+        }
+      @endif
+    </script>
     @yield('js_custom') 
 </body>
 
