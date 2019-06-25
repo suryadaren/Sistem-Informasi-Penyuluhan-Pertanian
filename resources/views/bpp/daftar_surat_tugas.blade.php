@@ -30,7 +30,7 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Products <span class="table-project-n">Data</span> Table</h1>
+                                    <h1>Daftar Surat Tugas Yang diterbitkan</h1>
                                 </div>
                             </div>
                             <div class="sparkline13-graph">
@@ -39,29 +39,25 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="id">No.</th>
-                                                <th data-field="name">Product Title</th>
-                                                <th data-field="company">Stock</th>
-                                                <th data-field="price">Price</th>
-                                                <th data-field="date">Date</th>
-                                                <th data-field="task">Status</th>
-                                                <th data-field="email">Total Sales</th>
-                                                <th data-field="action">Action</th>
+                                                <th data-field="nama">Nama</th>
+                                                <th data-field="kecamatan">Kecamatan</th>
+                                                <th data-field="company">Tanggal Pembuatan Draft</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            @for($i = 1; $i < 51; $i++)
-                                            <tr>
-                                                <td>{{$i}}</td>
-                                                <td>Product Title</td>
-                                                <td>Out Of Stock</td>
-                                                <td>$54</td>
-                                                <td>Jul 14, 2017</td>
-                                                <td>Active</td>
-                                                <td>$700</td>
-                                                <td class="datatable-ct"><a href="/bpp/detail_surat_tugas" class="btn btn-primary">lihat</a></td>
-                                            </tr>
-                                            @endfor
+                                            <?php $i = 1 ?>
+
+                                            @foreach($surat_tugas as $surat)
+                                                @if($surat->draft_programa->user->kecamatan == auth()->guard('bpp')->user()->kecamatan)
+                                                    <tr>
+                                                        <td>{{$i++}}</td>
+                                                        <td>{{$surat->draft_programa->user->nama}}</td>
+                                                        <td>{{$surat->draft_programa->user->desa}}</td>
+                                                        <td>{{$surat->draft_programa->created_at->format('Y-m-d')}}</td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

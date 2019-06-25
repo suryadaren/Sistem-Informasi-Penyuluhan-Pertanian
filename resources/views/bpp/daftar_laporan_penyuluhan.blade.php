@@ -39,8 +39,10 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="no">No.</th>
-                                                <th data-field="name">Penyuluh</th>
                                                 <th data-field="company">Tema</th>
+                                                <th data-field="name">Penyuluh</th>
+                                                <th data-field="desa">Desa</th>
+                                                <th data-field="tanggal">Tanggal</th>
                                                 <th data-field="task">Status</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
@@ -50,13 +52,21 @@
                                             <?php $no = 1 ?>
 
                                             @foreach($laporan_penyuluhan as $laporan)
-                                            <tr>
-                                                <td>{{$no++}}</td>
-                                                <td>{{$laporan->user->nama}}</td>
-                                                <td>{{$laporan->tema}}</td>
-                                                <td>{{$laporan->status}}</td>
-                                                <td class="datatable-ct"><a href="/bpp/detail_laporan_penyuluhan/{{$laporan->id}}" class="btn btn-primary">lihat</a></td>
-                                            </tr>
+                                                @if($laporan->draft_programa->user->kecamatan == auth()->guard('bpp')->user()->kecamatan && $laporan->draft_programa->status == "surat tugas diterbitkan")
+                                                    <tr>
+                                                        <td>{{$no++}}</td>
+                                                        <td>{{$laporan->tema}}</td>
+                                                        <td>{{$laporan->draft_programa->user->nama}}</td>
+                                                        <td>{{$laporan->draft_programa->user->desa}}</td>
+                                                        <td>{{$laporan->jadwal_penyuluhan}}</td>
+                                                        <td>{{$laporan->status}}</td>
+                                                        @if($laporan->status == "belum di kirim")
+                                                        <td class="datatable-ct"><a disabled href="#" class="btn btn-primary">lihat</a></td>
+                                                        @else
+                                                        <td class="datatable-ct"><a href="/bpp/detail_laporan_penyuluhan/{{$laporan->id}}" class="btn btn-primary">lihat</a></td>
+                                                        @endif
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>

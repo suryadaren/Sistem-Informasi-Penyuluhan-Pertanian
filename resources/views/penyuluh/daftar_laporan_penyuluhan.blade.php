@@ -39,8 +39,8 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="no">No.</th>
-                                                <th data-field="name">Penyuluh</th>
                                                 <th data-field="company">Tema</th>
+                                                <th data-field="name">Jadwal kegiatan</th>
                                                 <th data-field="task">Status</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
@@ -50,13 +50,15 @@
                                             <?php $no = 1 ?>
 
                                             @foreach($laporan_penyuluhan as $laporan)
-                                            <tr>
-                                                <td>{{$no++}}</td>
-                                                <td>{{$laporan->user->nama}}</td>
-                                                <td>{{$laporan->tema}}</td>
-                                                <td>{{$laporan->status}}</td>
-                                                <td class="datatable-ct"><a href="/penyuluh/detail_laporan_penyuluhan/{{$laporan->id}}" class="btn btn-primary">lihat</a></td>
-                                            </tr>
+                                                @if($laporan->draft_programa->user->id == auth()->guard('penyuluh')->id() && $laporan->draft_programa->status == "surat tugas diterbitkan")
+                                                    <tr>
+                                                        <td>{{$no++}}</td>
+                                                        <td>{{$laporan->tema}}</td>
+                                                        <td>{{$laporan->jadwal_penyuluhan}}</td>
+                                                        <td>{{$laporan->status}}</td>
+                                                        <td class="datatable-ct"><a href="/penyuluh/detail_laporan_penyuluhan/{{$laporan->id}}" class="btn btn-primary">lihat</a></td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>

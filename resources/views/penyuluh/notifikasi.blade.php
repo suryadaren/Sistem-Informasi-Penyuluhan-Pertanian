@@ -19,39 +19,37 @@
                     <div class="col-md-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="hpanel mg-b-15">
                             <div class="panel-body">
-                            <h3>Notifikasi</h3>
-                            <hr>
+                            <h3>Daftar Notifikasi</h3>
+                            <br><br>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-mailbox">
                                         <tbody>
-                                            @for($i = 0; $i < 20; $i++)
-                                            <tr class="unread">
-                                                <td class="">
-                                                    <div class="checkbox checkbox-single checkbox-success">
-                                                        <input type="checkbox" checked>
-                                                        <label></label>
-                                                    </div>
-                                                </td>
-                                                <td><a href="#">Jeremy Massey</a></td>
-                                                <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-                                                </td>
-                                                <td><i class="fa fa-paperclip"></i></td>
-                                                <td class="text-right mail-date"><a href="/penyuluh/lihat_notifikasi" class="btn btn-primary">Lihat</a></td>
-                                            </tr>
                                             <tr>
-                                                <td class="">
-                                                    <div class="checkbox checkbox-single">
-                                                        <input type="checkbox">
-                                                        <label></label>
-                                                    </div>
-                                                </td>
-                                                <td><a href="#">Ivor Rios</a> <span class="label label-info">Social</span>
-                                                </td>
-                                                <td><a href="#">Sed quis augue in nunc venenatis finibus.</a></td>
-                                                <td><i class="fa fa-paperclip"></i></td>
-                                                <td class="text-right mail-date"><a href="/penyuluh/lihat_notifikasi" class="btn btn-primary">Lihat</a></td>
+                                                <th>Nama Pengirim</th>
+                                                <th>Jabatan</th>
+                                                <th>Tanggal</th>
+                                                <th>Deskripsi</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
-                                            @endfor
+                                            @foreach($notifikasi as $notif)
+                                                @if($notif->status == "belum di baca")
+                                                    <tr class="unread">
+                                                        <td>{{$notif->user->nama}} <span class="label label-info">notifikasi baru</span></td>
+                                                        <td>{{$notif->user->jabatan}}</td>
+                                                        <td>{{$notif->created_at->format('Y-m-d')}}</td>
+                                                        <td>{{$notif->deskripsi}}</td>
+                                                        <td class="text-center"><a style="width: 200px" href="/penyuluh/lihat_notifikasi/{{$notif->id}}" class="btn btn-primary">Lihat detail</a></td>
+                                                    </tr>
+                                                @else
+                                                    <tr>
+                                                        <td>{{$notif->user->nama}}</td>
+                                                        <td>{{$notif->user->jabatan}}</td>
+                                                        <td>{{$notif->created_at->format('Y-m-d')}}</td>
+                                                        <td>{{$notif->deskripsi}}</td>
+                                                        <td class="text-center"><a style="width: 200px" href="/penyuluh/lihat_notifikasi/{{$notif->id}}" class="btn btn-primary">Lihat detail</a></td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

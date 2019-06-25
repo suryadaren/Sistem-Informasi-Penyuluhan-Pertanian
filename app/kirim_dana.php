@@ -12,4 +12,8 @@ class kirim_dana extends Authenticatable
      protected $fillable = [
         'proposal_dana_id', 'jumlah','norek', 'nama_pengirim', 'bank_pengirim', 'berkas', 'status', 'created_at', 'updated_at'
     ];
+
+    public function proposal_dana(){
+    	return $this->belongsTo(proposal_dana::class,"proposal_dana_id");
+    }
 }

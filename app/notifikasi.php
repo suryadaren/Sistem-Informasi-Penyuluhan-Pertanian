@@ -10,6 +10,10 @@ class notifikasi extends Authenticatable
     protected $table = "notifikasi";
 
      protected $fillable = [
-        'pengirim_id', 'penerima_id', 'id_berkas', 'deskripsi', 'status', 'created_at', 'updated_at'
+        'pengirim', 'penerima', 'id_berkas', 'type', 'deskripsi', 'status', 'created_at', 'updated_at'
     ];
+
+    public function user(){
+    	return $this->belongsTo(user::class,"pengirim");
+    }
 }

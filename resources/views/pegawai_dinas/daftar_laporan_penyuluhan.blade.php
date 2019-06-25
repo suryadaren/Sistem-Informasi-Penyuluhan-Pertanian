@@ -52,7 +52,7 @@
                                             @foreach($laporan_penyuluhan as $laporan)
                                             <tr>
                                                 <td>{{$no++}}</td>
-                                                <td>{{$laporan->user->nama}}</td>
+                                                <td>{{$laporan->draft_programa->user->nama}}</td>
                                                 <td>{{$laporan->tema}}</td>
                                                 <td>{{$laporan->status}}</td>
                                                 <td class="datatable-ct"><a href="/pegawai_dinas/detail_laporan_penyuluhan/{{$laporan->id}}" class="btn btn-primary">lihat</a></td>

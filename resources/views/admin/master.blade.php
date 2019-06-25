@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
-		============================================ -->
+        ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="/template/img/favicon.png">
     
     <!-- Google Fonts
@@ -51,6 +51,7 @@
         ============================================ -->
     <link rel="stylesheet" href="/template/css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="/template/css/calendar/fullcalendar.print.min.css">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     
     
     @yield('css_custom')
@@ -65,32 +66,14 @@
    <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header" style="margin-top: 10%">
-              <p class="centered"><img src="/template/img/contact/3.jpg" class="img-circle" width="80"></p>
-              <h5 class="centered" style="color: red">Sam Soffes</h5>
+              <p class="centered"><img src="{{Storage::url(auth()->guard('admin')->user()->foto)}}" class="img-circle" width="80"></p>
+              <h5 class="centered" style="color: red">{{auth()->guard('admin')->user()->nama}}</h5>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li>
-                            <a title="Profil" href="/admin/profil" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Profil</span></a>
-                        </li>
-                        <li>
-                            <a title="Kepala Dinas" href="/admin/kepala_dinas" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Kepala Dinas</span></a>
-                        </li>
-                        <li>
-                            <a title="Daftar Pegawai Dinas" href="/admin/daftar_pegawai_dinas" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Daftar Pegawai Dinas</span></a>
-                        </li>
-                        <li>
-                            <a title="Daftar Kepala BPP" href="/admin/daftar_kepala_bpp" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Daftar Kepala BPP</span></a>
-                        </li>
-                        <li>
-                            <a title="Daftar Penyuluh" href="/admin/daftar_penyuluh_lapangan" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Daftar Penyuluh</span></a>
-                        </li>
-                        <li>
-                            <a title="Daftar Kecamatan" href="/admin/daftar_kecamatan" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Daftar Kecamatan</span></a>
-                        </li>
-                        <li>
-                            <a title="Daftar Nagari" href="/admin/daftar_nagari" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Daftar Nagari</span></a>
+                            <a title="Pengguna" href="/admin/pengguna" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Pengguna</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -120,77 +103,16 @@
                                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                         <div class="header-right-info">
                                             <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                                <li class="nav-item dropdown">
-                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o adminpro-chat-pro" aria-hidden="true"></i><span class="indicator-ms"></span></a>
-                                                    <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
-                                                        <div class="message-single-top">
-                                                            <h1>Notifikasi</h1>
-                                                        </div>
-                                                        <ul class="message-menu">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/1.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Advanda Cro</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/4.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Sulaiman din</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/3.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Victor Jara</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/2.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Victor Jara</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="message-view">
-                                                            <a href="#">View All Messages</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                             <i class="fa fa-user adminpro-user-rounded header-riht-inf" aria-hidden="true"></i>
-                                                            <span class="admin-name">Advanda Cro</span>
+                                                            <span class="admin-name">{{auth()->guard('admin')->user()->nama}}</span>
                                                             <i class="fa fa-angle-down adminpro-icon adminpro-down-arrow"></i>
                                                         </a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                        <li><a href="/penyuluh/profil"><span class="fa fa-user author-log-ic"></span>Profil Saya</a>
+                                                        <li><a href="/admin/profil"><span class="fa fa-user author-log-ic"></span>Profil Saya</a>
                                                         </li>
-                                                        <li><a href="login.html"><span class="fa fa-lock author-log-ic"></span>Log Out</a>
+                                                        <li><a href="/logout_admin"><span class="fa fa-lock author-log-ic"></span>Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -264,6 +186,21 @@
         ============================================ -->
     <script src="/template/js/metisMenu/metisMenu.min.js"></script>
     <script src="/template/js/metisMenu/metisMenu-active.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+      @if(Session::has('message'))
+        var type="{{Session::get('alert-type','success')}}"
+      
+        switch(type){
+          case 'success':
+           toastr.info("{{ Session::get('message') }}");
+           break;
+        case 'error':
+          toastr.error("{{ Session::get('message') }}");
+          break;
+        }
+      @endif
+    </script>
     @yield('js_custom') 
 </body>
 

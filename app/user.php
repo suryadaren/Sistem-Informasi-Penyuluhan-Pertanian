@@ -13,11 +13,10 @@ class user extends Authenticatable
         'nama', 'username', 'password', 'nip', 'email', 'desa', 'kecamatan', 'jabatan', 'foto', 'created_at', 'updated_at'
     ];
 
-    public function laporan_penyuluhan () {
-    	$this->hasMany(laporan_penyuluhan::class);
-    }
-
-    public function draft_programa () {
+    public function draft_programa() {
     	$this->hasMany(draft_programa::class);
+    }
+    public function notifikasi() {
+    	$this->hasMany(notifikasi::class);
     }
 }

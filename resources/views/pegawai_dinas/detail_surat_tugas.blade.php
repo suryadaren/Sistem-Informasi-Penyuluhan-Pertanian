@@ -77,7 +77,11 @@
 
                             <div class="panel-footer text-right">
                                 <div class="btn-group">
+                                    @if($surat->status == "valid oleh kepala dinas")
+                                    <a class="btn btn-primary" href="/pegawai_dinas/terbitkan/{{$surat->id}}">Terbitkan</a>
+                                    @else
                                     <a class="btn btn-default" href="/pegawai_dinas/daftar_surat_tugas"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -87,14 +91,14 @@
         </div>
         <!-- tabs End-->
 
-        <!-- <div id="checklist" class="modal modal-adminpro-general default-popup-PrimaryModal fade" role="dialog">
+        <div id="checklist" class="modal modal-adminpro-general default-popup-PrimaryModal fade" role="dialog">
             <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header header-color-modal bg-color-1">
                             <h4 class="modal-title">Checklist kelayakan</h4>
                         </div>
                         <div class="modal-body" style="text-align: left">
-                            @if($surat->process_laporan_penyuluhan)
+                            @if($surat->process_surat_tugas)
                             <table>
                                 <tr>
                                     <th style="padding: 5px">Ceklis Kelayakan</th>
@@ -103,34 +107,18 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Tema</h5>
-                                        <p>Sesuai dengan tema yang sudah di tentukan pada draft programa</p>
-                                    </td>
-                                    <td>
-                                        @if($surat->process_laporan_penyuluhan->status_tema)
-                                            <span class="fa fa-check text-primary"></span>
-                                        @else
-                                            <span class="fa fa-times text-danger"></span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <p>{{$surat->process_laporan_penyuluhan->des_tema}}</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         <h5>Isi/Konten</h5>
                                         <p>berisi semua proses kegiatan berupa semua fakta yang didapatkan pada saat melakukan kegiatan penyuluhan</p>
                                     </td>
                                     <td>
-                                        @if($surat->process_laporan_penyuluhan->status_isi)
+                                        @if($surat->process_surat_tugas->status_isi)
                                             <span class="fa fa-check text-primary"></span>
                                         @else
                                             <span class="fa fa-times text-danger"></span>
                                         @endif
                                     </td>
                                     <td>
-                                        <p>{{$surat->process_laporan_penyuluhan->des_isi}}</p>
+                                        <p>{{$surat->process_surat_tugas->des_isi}}</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -139,30 +127,14 @@
                                         <p>Berkas surat berformat pdf atau docx</p>
                                     </td>
                                     <td>
-                                        @if($surat->process_laporan_penyuluhan->status_berkas)
+                                        @if($surat->process_surat_tugas->status_berkas)
                                             <span class="fa fa-check text-primary"></span>
                                         @else
                                             <span class="fa fa-times text-danger"></span>
                                         @endif
                                     </td>
                                     <td>
-                                        <p>{{$surat->process_laporan_penyuluhan->des_berkas}}</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5>Foto surat</h5>
-                                        <p>Foto sudah berformat jpg,jpeg,png,bmp. dan tanpa rekayasa</p>
-                                    </td>
-                                    <td>
-                                        @if($surat->process_laporan_penyuluhan->status_foto)
-                                            <span class="fa fa-check text-primary"></span>
-                                        @else
-                                            <span class="fa fa-times text-danger"></span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <p>{{$surat->process_laporan_penyuluhan->des_foto}}</p>
+                                        <p>{{$surat->process_surat_tugas->des_berkas}}</p>
                                     </td>
                                 </tr>
                             </table>
@@ -175,7 +147,7 @@
                         </div>
                     </div>
             </div>
-        </div> -->
+        </div>
 
         <!-- <div id="DangerModalhdbgcl" class="modal modal-adminpro-general FullColor-popup-DangerModal fade" role="dialog">
             <div class="modal-dialog">

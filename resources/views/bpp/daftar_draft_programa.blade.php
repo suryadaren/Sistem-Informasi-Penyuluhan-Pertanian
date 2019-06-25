@@ -30,7 +30,7 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Products <span class="table-project-n">Data</span> Table</h1>
+                                    <h1>Daftar Draft Programa</h1>
                                 </div>
                             </div>
                             <div class="sparkline13-graph">
@@ -41,7 +41,6 @@
                                                 <th data-field="no">No.</th>
                                                 <th data-field="name">Penyuluh</th>
                                                 <th data-field="company">Desa</th>
-                                                <th data-field="price">Kecamatan</th>
                                                 <th data-field="date">Tanggal</th>
                                                 <th data-field="task">Status</th>
                                                 <th data-field="action">Action</th>
@@ -52,15 +51,16 @@
                                             <?php $no = 1; ?>
 
                                             @foreach($draft_programa as $draft)
-                                            <tr>
-                                                <td>{{$no++}}</td>
-                                                <td>{{$draft->user->nama}}</td>
-                                                <td>{{$draft->user->desa}}</td>
-                                                <td>{{$draft->user->kecamatan}}</td>
-                                                <td>{{$draft->created_at}}</td>
-                                                <td>{{$draft->status}}</td>
-                                                <td class="datatable-ct"><a href="/bpp/detail_draft_programa/{{$draft->id}}" class="btn btn-primary">lihat</a></td>
-                                            </tr>
+                                                @if($draft->user->kecamatan == auth()->guard('bpp')->user()->kecamatan)
+                                                    <tr>
+                                                        <td>{{$no++}}</td>
+                                                        <td>{{$draft->user->nama}}</td>
+                                                        <td>{{$draft->user->desa}}</td>
+                                                        <td>{{$draft->created_at->format('Y-m-d')}}</td>
+                                                        <td>{{$draft->status}}</td>
+                                                        <td class="datatable-ct"><a href="/bpp/detail_draft_programa/{{$draft->id}}" class="btn btn-primary">lihat</a></td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>

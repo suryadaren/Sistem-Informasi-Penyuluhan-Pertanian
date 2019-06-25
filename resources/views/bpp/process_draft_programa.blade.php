@@ -47,10 +47,13 @@
                                                         Manfaat, menuliskan kontribusi skripsi terhadap ruang lingkup yang lebih dan/atau terhadap para pemangku kepentingan (stakeholders).</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="pendahuluan" value="tema">
+                                                        <input type="checkbox" class="form-controle" style="transform: scale(1.5);" name="pendahuluan" value="tema">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_pendahuluan" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_pendahuluan" cols="30" rows="3">{{old('des_pendahuluan')}}</textarea>
+                                                          @if($errors->has('des_pendahuluan'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_pendahuluan')}} </div>
+                                                          @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -60,10 +63,13 @@
                                                         Keadaan, menuliskan keadaan atau kondisi yang ada pada target penelitian baik secara umum atau khusus.</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="keadaan" value="tema">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="keadaan" value="tema">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_keadaan" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_keadaan" cols="30" rows="3">{{old('des_keadaan')}}</textarea>
+                                                          @if($errors->has('des_keadaan'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_keadaan')}} </div>
+                                                          @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -73,10 +79,13 @@
                                                         Tujuan, langkah pertama dalam pencapaian dari dilakukannya penelitian. Berupa target spesifik atau khusus. Penulisan indikasi ke arah mana atau data informasi yang dicari dari penelitian ini, dirumuskan dalam bentuk pernyataan yang konkret, dapat diamati dan diukur.</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="tujuan" value="tema">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="tujuan" value="tema">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_tujuan" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_tujuan" cols="30" rows="3">{{old('des_tujuan')}}</textarea>
+                                                          @if($errors->has('des_tujuan'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_tujuan')}} </div>
+                                                          @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -86,10 +95,13 @@
                                                         Tujuan, Menuliskan kesenjangan antara harapan dan kenyataan.menuliskan kesenjangan dari apa yang seharusnya  dan apa yang ada dalam kenyataan.</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="permasalahan" value="tema">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="permasalahan" value="tema">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_permasalahan" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_permasalahan" cols="30" rows="3">{{old('des_permasalahan')}}</textarea>
+                                                          @if($errors->has('des_permasalahan'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_permasalahan')}} </div>
+                                                          @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -98,10 +110,13 @@
                                                         <p>Berkas Draft Programa harus berformat pdf atau docx</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="berkas" value="tema">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="berkas" value="tema">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_berkas" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_berkas" cols="30" rows="3">{{old('des_berkas')}}</textarea>
+                                                          @if($errors->has('des_berkas'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_berkas')}} </div>
+                                                          @endif
                                                     </td>
                                                 </tr>
                                             </table>

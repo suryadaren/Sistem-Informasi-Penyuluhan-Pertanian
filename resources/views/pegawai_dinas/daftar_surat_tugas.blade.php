@@ -30,7 +30,7 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Products <span class="table-project-n">Data</span> Table</h1>
+                                    <h1>Daftar Surat Tugas</h1>
                                 </div>
                             </div>
                             <div class="sparkline13-graph">
@@ -42,6 +42,7 @@
                                                 <th data-field="name">Penyuluh</th>
                                                 <th data-field="company">Desa</th>
                                                 <th data-field="price">Kecamatan</th>
+                                                <th data-field="tgl">tanggal draft dibuat</th>
                                                 <th data-field="date">Status</th>
                                                 <th data-field="task">Action</th>
                                             </tr>
@@ -56,6 +57,7 @@
                                                 <td>{{$surat->draft_programa->user->nama}}</td>
                                                 <td>{{$surat->draft_programa->user->desa}}</td>
                                                 <td>{{$surat->draft_programa->user->kecamatan}}</td>
+                                                <td>{{$surat->draft_programa->created_at->format('Y-m-d')}}</td>
                                                 <td>{{$surat->status}}</td>
                                                 <td class="datatable-ct"><a href="/pegawai_dinas/detail_surat_tugas/{{$surat->id}}" class="btn btn-primary">lihat</a></td>
                                             </tr>

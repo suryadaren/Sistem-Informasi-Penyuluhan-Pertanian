@@ -94,7 +94,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="all-form-element-inner">
-                                                            <form action="/penyuluh/ubah_data/1" method="post" enctype="multipart/form-data">
+                                                            <form action="/penyuluh/ubah_data/{{auth()->guard('penyuluh')->id()}}" method="post" enctype="multipart/form-data">
                                                                 {{@csrf_field()}}
                                                                 {{@method_field('put')}}
                                                                 <div class="form-group-inner">

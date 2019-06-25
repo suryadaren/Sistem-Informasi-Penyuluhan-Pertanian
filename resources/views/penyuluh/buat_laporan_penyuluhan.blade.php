@@ -25,6 +25,7 @@
                             <div class="sparkline10-hd">
                                 <div class="main-sparkline10-hd">
                                     <h1>Form Laporan Kegiatan Penyuluhan Pertanian</h1>
+                                    <hr>
                                 </div>
                             </div>
                             <div class="sparkline10-graph">
@@ -35,14 +36,11 @@
                                                 <form action="/penyuluh/input_laporan_penyuluhan" method="post" enctype="multipart/form-data">
                                                     {{@csrf_field()}}
                                                     <br>
+                                                    <input type="hidden" name="id" value="{{$laporan->id}}">
                                                     <div class="form-group-inner">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <label>Tema Penyuluhan</label>
-                                                                <input name="tema" type="text" class="form-control basic-ele-mg-b-10 responsive-mg-b-10" placeholder="ex :  Penanganan Pasca Panen sebagai bahan baku olahan" value="{{old('tema')}}" />
-                                                                  @if($errors->has('tema'))
-                                                                    <div class="alert alert-danger" role="alert"> {{$errors->first('tema')}} </div>
-                                                                  @endif
+                                                            <h4>Tema Penyuluhan : {{$laporan->tema}}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -55,8 +53,20 @@
                                                               @if($errors->has('content'))
                                                                 <div class="alert alert-danger" role="alert"> {{$errors->first('content')}} </div>
                                                               @endif
-                                                            <p id="wordCount">words : 0</p>
+                                                            <p id="wordCount">jumlah kata : 0</p>
                                                             <input type="hidden" id="words">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group-inner">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <label>Dana Terpakai (Rupiah)</label>
+                                                            <input type="text" name="dana_terpakai" id="dana_terpakai" class="form-control" placeholder="contoh : 1.000.000" value="{{old('dana_terpakai')}}">
+                                                              @if($errors->has('dana_terpakai'))
+                                                                <div class="alert alert-danger" role="alert"> {{$errors->first('dana_terpakai')}} </div>
+                                                              @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -78,6 +88,20 @@
                                                     <div class="form-group-inner">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <label>Foto Presensi (jpg,jpeg,png)</label>
+                                                            <div class="input-group control-group" >
+                                                              <input type="file" name="presensi" class="form-control">
+                                                                  @if($errors->has('presensi'))
+                                                                    <div class="alert alert-danger" role="alert"> {{$errors->first('presensi')}} </div>
+                                                                  @endif
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group-inner">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <label>Foto Kegiatan penyuluhan (jpg,jpeg,png)</label>
                                                             <div class="input-group control-group increment" >
                                                               <input type="file" name="foto[]" class="form-control">
@@ -85,17 +109,19 @@
                                                                     <div class="alert alert-danger" role="alert"> {{$errors->first('foto')}} </div>
                                                                   @endif
                                                               <div class="input-group-btn"> 
-                                                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                                                <button style="width: 100px" class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Tambah</button>
                                                               </div>
                                                             </div>
+
                                                             <div class="clone hide">
                                                               <div class="control-group input-group" style="margin-top:10px">
                                                                 <input type="file" name="foto[]" class="form-control">
                                                                 <div class="input-group-btn"> 
-                                                                  <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                                                  <button style="width: 100px" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i>Hapus</button>
                                                                 </div>
                                                               </div>
                                                             </div>
+                                                            
                                                             </div>
                                                         </div>
                                                     </div>
@@ -178,5 +204,32 @@
             }
 
         });
+    </script>
+    <script type="text/javascript">
+        
+        var rupiah = document.getElementById('dana_terpakai');
+        rupiah.addEventListener('keyup', function(e){
+            // tambahkan 'Rp.' pada saat form di ketik
+            // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+            rupiah.value = formatRupiah(this.value, 'Rp. ');
+        });
+ 
+        /* Fungsi formatRupiah */
+        function formatRupiah(angka, prefix){
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split           = number_string.split(','),
+            sisa            = split[0].length % 3,
+            rupiah          = split[0].substr(0, sisa),
+            ribuan          = split[0].substr(sisa).match(/\d{3}/gi);
+ 
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if(ribuan){
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+ 
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
+        }
     </script>
 @endsection

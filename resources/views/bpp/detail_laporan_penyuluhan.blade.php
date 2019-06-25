@@ -24,7 +24,7 @@
 
                                 <div class="p-xs h4">
                                     <small class="pull-right">
-                                            {{$laporan->created_at}}
+                                            {{$laporan->jadwal_penyuluhan}}
                                         </small> Detail Laporan Penyuluhan
 
                                 </div>
@@ -35,11 +35,11 @@
                                     <div>
                                         <span class="font-extra-bold">Tema: </span> {{$laporan->tema}}
                                     </div>
-                                    <div>
-                                        <span class="font-extra-bold">Penyuluh: </span> {{$laporan->user->nama}}
-                                    </div>
                                     <div class="text-danger">
                                         <span class="font-extra-bold">Status: </span> {{$laporan->status}}
+                                    </div>
+                                    <div>
+                                        <span class="font-extra-bold">dana Terpakai: </span> {{$laporan->dana_terpakai}}
                                     </div>
                                     <div>
                                     <button class="btn btn-success" data-toggle="modal" data-target="#checklist"><i class="fa fa-check"></i> Lihat Checklist kelayakan</button>
@@ -60,9 +60,10 @@
                                             <div class="hpanel">
                                                 <div class="panel-body file-body incon-ctn-view">
                                                     <i class="fa fa-file-pdf-o text-info"></i>
+                                                    <label>Berkas Laporan Penyuluhan</label>
                                                 </div>
                                                 <div class="panel-footer text-center">
-                                                    <a href="{{Storage::url($laporan->berkas)}}" download>Download Berkas</a>
+                                                    <a href="{{Storage::url($laporan->berkas)}}" download>Download Berkas laporan</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,6 +71,24 @@
 
                                 </div>
                             </div>
+                            <hr>
+                            <label>Foto Presensi Penyuluhan</label>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <div class="hpanel blog-box responsive-mg-b-30">
+                                        <div class="panel-heading custom-blog-hd">
+                                            <img src="{{Storage::url($laporan->presensi)}}" alt="foto">
+                                        </div>
+                                        <div class="panel-footer">
+                                            <span class="pull-right"><i class="fa fa-download"> </i> <a href="{{Storage::url($laporan->presensi)}}" download>download</a></span>
+                                            <i class="fa fa-eye"> </i> <a target="_blank" href="{{Storage::url($laporan->presensi)}}">lihat</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                            <label>Foto kegiatan Penyuluhan</label>
                             <div class="row">
                                 @foreach($foto as $f)
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -86,10 +105,9 @@
                                 @endforeach
                             </div>
                             <br>
-
                             <div class="panel-footer text-right">
                                 <div class="btn-group">
-                                    @if($laporan->status == "belum diperiksa")
+                                    @if($laporan->status == "belum diperiksa bpp")
                                         <a href="/bpp/process/{{$laporan->id}}" class="btn btn-primary">Process</a>
                                     @else
                                         <a class="btn btn-default" href="/bpp/daftar_laporan_penyuluhan"><i class="fa fa-arrow-left"></i> Kembali</a>
@@ -101,8 +119,6 @@
                 </div>
             </div>
         </div>
-        <!-- tabs End-->
-
         <div id="checklist" class="modal modal-adminpro-general default-popup-PrimaryModal fade" role="dialog">
             <div class="modal-dialog">
                     <div class="modal-content">
@@ -183,7 +199,7 @@
                                 </tr>
                             </table>
                             @else
-                                <p>Belum Di periksa</p>
+                                <p>Laporan Belum Di periksa</p>
                             @endif
                         </div>
                         <div class="modal-footer">
@@ -192,28 +208,6 @@
                     </div>
             </div>
         </div>
-
-        <!-- <div id="DangerModalhdbgcl" class="modal modal-adminpro-general FullColor-popup-DangerModal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header header-color-modal bg-color-4">
-                        <h4 class="modal-title">Tolak berkas</h4>
-                    </div>
-                    <div class="modal-body" style="text-align: left">
-                        <h4>Pesan :</h4>
-                        <div class="form-group">
-                            <label class="sr-only" for="f1-latar-belakang">Maksimal 500 kata</label>
-                            <textarea name="f1-latar-belakang" placeholder="Maksimal 500 kata" 
-                            class="f1-latar-belakang form-control" id="f1-latar-belakang" required></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a data-dismiss="modal" href="#">Cancel</a>
-                        <a href="#">Process</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <!-- tabs End-->
 @endsection
 

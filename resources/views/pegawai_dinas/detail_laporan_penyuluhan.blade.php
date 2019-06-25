@@ -36,7 +36,7 @@
                                         <span class="font-extra-bold">Tema: </span> {{$laporan->tema}}
                                     </div>
                                     <div>
-                                        <span class="font-extra-bold">Penyuluh: </span> {{$laporan->user->nama}}
+                                        <span class="font-extra-bold">Penyuluh: </span> {{$laporan->draft_programa->user->nama}}
                                     </div>
                                     <div class="text-danger">
                                         <span class="font-extra-bold">Status: </span> {{$laporan->status}}
@@ -89,7 +89,11 @@
 
                             <div class="panel-footer text-right">
                                 <div class="btn-group">
-                                    <a href="/pegawai_dinas/process/{{$laporan->id}}" class="btn btn-primary">Process</a>
+                                    @if($laporan->status == "valid oleh bpp")
+                                        <a href="/pegawai_dinas/process/{{$laporan->id}}" class="btn btn-primary">Process</a>
+                                    @else
+                                        <a class="btn btn-default" href="/pegawai_dinas/daftar_laporan_penyuluhan"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

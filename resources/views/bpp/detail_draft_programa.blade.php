@@ -153,7 +153,11 @@
                             <br>
                             <div class="panel-footer text-right">
                                 <div class="btn-group">
-                                    <a href="/bpp/process_draft/{{$draft->id}}" class="btn btn-primary">Process</a>
+                                    @if($draft->status == "belum diperiksa bpp")
+                                        <a href="/bpp/process_draft/{{$draft->id}}" class="btn btn-primary">Process</a>
+                                    @else
+                                        <a class="btn btn-default" href="/bpp/daftar_draft_programa"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

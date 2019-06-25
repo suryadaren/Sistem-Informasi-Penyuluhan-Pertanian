@@ -43,7 +43,7 @@
                                                               @if($errors->has('content'))
                                                                 <div class="alert alert-danger" role="alert"> {{$errors->first('content')}} </div>
                                                               @endif
-                                                            <p id="wordCount">words : 0</p>
+                                                            <p id="wordCount">jumlah kata : 0</p>
                                                             <input type="hidden" id="words">
                                                             </div>
                                                         </div>

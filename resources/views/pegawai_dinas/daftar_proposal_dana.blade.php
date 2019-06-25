@@ -30,7 +30,7 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Products <span class="table-project-n">Data</span> Table</h1>
+                                    <h1>Daftar Proposal Dana</h1>
                                 </div>
                             </div>
                             <div class="sparkline13-graph">
@@ -38,30 +38,32 @@
                                     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" >
                                         <thead>
                                             <tr>
-                                                <th data-field="id">No.</th>
-                                                <th data-field="name">Product Title</th>
-                                                <th data-field="company">Stock</th>
-                                                <th data-field="price">Price</th>
-                                                <th data-field="date">Date</th>
+                                                <th data-field="no">No.</th>
+                                                <th data-field="name">Penyuluh</th>
+                                                <th data-field="company">Desa</th>
+                                                <th data-field="price">Kecamatan</th>
+                                                <th data-field="date">Dana Dikirim</th>
+                                                <th data-field="tgl">tanggal</th>
                                                 <th data-field="task">Status</th>
-                                                <th data-field="email">Total Sales</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            @for($i = 1; $i < 51; $i++)
+                                            <?php $no = 1; ?>
+
+                                            @foreach($proposal_dana as $proposal)
                                             <tr>
-                                                <td>{{$i}}</td>
-                                                <td>Product Title</td>
-                                                <td>Out Of Stock</td>
-                                                <td>$54</td>
-                                                <td>Jul 14, 2017</td>
-                                                <td>Active</td>
-                                                <td>$700</td>
-                                                <td class="datatable-ct"><a href="/pegawai_dinas/detail_proposal_dana" class="btn btn-primary">lihat</a></td>
+                                                <td>{{$no++}}</td>
+                                                <td>{{$proposal->draft_programa->user->nama}}</td>
+                                                <td>{{$proposal->draft_programa->user->desa}}</td>
+                                                <td>{{$proposal->draft_programa->user->kecamatan}}</td>
+                                                <td>Rp. {{$proposal->dana_dikirim}},-</td>
+                                                <td>{{$proposal->created_at->format('Y-m-d')}}</td>
+                                                <td>{{$proposal->status}}</td>
+                                                <td class="datatable-ct"><a href="/pegawai_dinas/detail_proposal_dana/{{$proposal->id}}" class="btn btn-primary">lihat</a></td>
                                             </tr>
-                                            @endfor
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

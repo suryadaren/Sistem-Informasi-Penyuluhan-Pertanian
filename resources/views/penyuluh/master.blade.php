@@ -67,8 +67,8 @@
    <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header" style="margin-top: 10%">
-              <p class="centered"><img src="/template/img/contact/3.jpg" class="img-circle" width="80"></p>
-              <h5 class="centered" style="color: red">Sam Soffes</h5>
+              <p class="centered"><img src="{{Storage::url(auth()->guard('penyuluh')->user()->foto)}}" class="img-circle" width="80"></p>
+              <h5 class="centered" style="color: red">{{auth()->guard('penyuluh')->user()->nama}}</h5>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -76,9 +76,13 @@
                         <li>
                             <a title="Profil" href="/penyuluh/profil" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Profil</span></a>
                         </li>
-                        <!-- <li>
+                        <li>
+                            @if($notifbaru)
+                            <a title="Notifikasi" href="/penyuluh/notifikasi" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap text-danger" aria-hidden="true"></i> <span class="mini-click-non text-danger">Notifikasi</span></a>
+                            @else
                             <a title="Notifikasi" href="/penyuluh/notifikasi" aria-expanded="false"><i class="fa big-icon fa-bell icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">Notifikasi</span></a>
-                        </li> -->
+                            @endif
+                        </li>
                         <!-- <li>
                             <a class="has-arrow" href="index.html">
                                    <i class="fa big-icon fa-calendar icon-wrap"></i>
@@ -92,7 +96,7 @@
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="fa big-icon fa-file-text icon-wrap"></i> <span class="mini-click-non">Laporan Penyuluhan</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Buat Laporan" href="/penyuluh/buat_laporan_penyuluhan"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Buat Laporan</span></a></li>
+                                <li><a title="Buat Laporan" href="/penyuluh/pilih_jadwal"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Buat Laporan</span></a></li>
                                 <li><a title="Daftar Laporan" href="/penyuluh/daftar_laporan_penyuluhan"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Laporan</span></a></li>
                             </ul>
                         </li>
@@ -100,6 +104,7 @@
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="fa big-icon fa-desktop icon-wrap"></i> <span class="mini-click-non">Draft Programa</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Buat Draft" href="/penyuluh/buat_draft_programa"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Buat Draft</span></a></li>
+                                <!-- <li><a title="Lihat Jadwal" href="/penyuluh/pilih_draft"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Lihat Jadwal</span></a></li> -->
                                 <li><a title="Daftar Draft" href="/penyuluh/daftar_draft_programa"><i class="fa fa-apple sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Draft</span></a></li>
                             </ul>
                         </li>
@@ -107,7 +112,7 @@
                             <a title="Daftar Surat Tugas" href="/penyuluh/daftar_surat_tugas" aria-expanded="false"><i class="fa fa-briefcase sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Surat Tugas</span></a>
                         </li>
                         <li>
-                            <a title="Daftar Proposal Dana" href="/penyuluh/daftar_proposal_dana" aria-expanded="false"><i class="fa fa-dollar sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Proposal Dana</span></a>
+                            <a title="Daftar Pengiriman Dana" href="/penyuluh/daftar_pengiriman_dana" aria-expanded="false"><i class="fa fa-dollar sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Daftar Pengiriman Dana</span></a>
                         </li>
                         <!-- <li>
                             <a title="daftar Kelompok Tani" href="/penyuluh/daftar_kelompok_tani" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap" aria-hidden="true"></i> <span class="mini-click-non">daftar Kelompok Tani</span></a>
@@ -140,77 +145,16 @@
                                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                         <div class="header-right-info">
                                             <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                                <li class="nav-item dropdown">
-                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o adminpro-chat-pro" aria-hidden="true"></i><span class="indicator-ms"></span></a>
-                                                    <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
-                                                        <div class="message-single-top">
-                                                            <h1>Notifikasi</h1>
-                                                        </div>
-                                                        <ul class="message-menu">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/1.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Advanda Cro</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/4.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Sulaiman din</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/3.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Victor Jara</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <div class="message-img">
-                                                                        <img src="/template/img/contact/2.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="message-content">
-                                                                        <span class="message-date">16 Sept</span>
-                                                                        <h2>Victor Jara</h2>
-                                                                        <p>Please done this project as soon possible.</p>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="message-view">
-                                                            <a href="#">View All Messages</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                             <i class="fa fa-user adminpro-user-rounded header-riht-inf" aria-hidden="true"></i>
-                                                            <span class="admin-name">Advanda Cro</span>
+                                                            <span class="admin-name">{{auth()->guard('penyuluh')->user()->nama}}</span>
                                                             <i class="fa fa-angle-down adminpro-icon adminpro-down-arrow"></i>
                                                         </a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li><a href="/penyuluh/profil"><span class="fa fa-user author-log-ic"></span>Profil Saya</a>
                                                         </li>
-                                                        <li><a href="login.html"><span class="fa fa-lock author-log-ic"></span>Log Out</a>
+                                                        <li><a href="/logout_penyuluh"><span class="fa fa-lock author-log-ic"></span>Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>

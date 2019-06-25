@@ -24,8 +24,8 @@
 
                                 <div class="p-xs h4">
                                     <small class="pull-right">
-                                            08:26 PM (16 hours ago)
-                                        </small> Email view
+                                            {{$surat->created_at}}
+                                        </small> Detail surat Perintah Tugas Penyuluhan
 
                                 </div>
                             </div>
@@ -33,39 +33,30 @@
                                 <div class="p-m custom-address-mailbox">
 
                                     <div>
-                                        <span class="font-extra-bold">Subject: </span> Lorem Ipsum has been the industry's standard dummy text ever
+                                        <span class="font-extra-bold">Penyuluh: </span> {{$surat->draft_programa->user->nama}}
                                     </div>
                                     <div>
-                                        <span class="font-extra-bold">From: </span>
-                                        <a href="#">example.@email.com</a>
+                                        <span class="font-extra-bold">Desa: </span> {{$surat->draft_programa->user->desa}}
                                     </div>
                                     <div>
-                                        <span class="font-extra-bold">Date: </span> 14.10.2016
+                                        <span class="font-extra-bold">Kecamatan: </span> {{$surat->draft_programa->user->kecamatan}}
+                                    </div>
+                                    <div class="text-danger">
+                                        <span class="font-extra-bold">Status: </span> {{$surat->status}}
+                                    </div>
+                                    <div>
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#checklist"><i class="fa fa-check"></i> Lihat Checklist kelayakan</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body panel-csm">
                                 <div>
-                                    <h4>Hello Jonathan! </h4>
-
-                                    <p>Dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the dustrys</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                                        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                                        containing Lorem Ipsum passages, and more
-                                        <br/>
-                                        <br/>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
-                                        a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. recently with.</p>
-
-                                    <p>Mark Smith
-                                    </p>
+                                    <h4>Content surat Penyuluhan</h4>
+                                    <p>{{$surat->content}}</p>
                                 </div>
                             </div>
 
                             <div class="border-bottom border-left border-right bg-white mg-tb-15">
-                                <p class="m-b-md">
-                                    <span><i class="fa fa-paperclip"></i> 3 attachments - </span>
-                                    <a href="#" class="btn btn-default btn-xs">Download all in zip format <i class="fa fa-file-zip-o"></i> </a>
-                                </p>
-
                                 <div>
                                     <div class="row">
                                         <div class="col-sm-3 col-md-3 col-sm-3 col-xs-12">
@@ -73,28 +64,8 @@
                                                 <div class="panel-body file-body incon-ctn-view">
                                                     <i class="fa fa-file-pdf-o text-info"></i>
                                                 </div>
-                                                <div class="panel-footer">
-                                                    <a href="#">Document_2016.doc</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="hpanel">
-                                                <div class="panel-body file-body incon-ctn-view">
-                                                    <i class="fa fa-file-audio-o text-warning"></i>
-                                                </div>
-                                                <div class="panel-footer">
-                                                    <a href="#">Audio_2016.doc</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="hpanel">
-                                                <div class="panel-body file-body incon-ctn-view">
-                                                    <i class="fa fa-file-excel-o text-success"></i>
-                                                </div>
-                                                <div class="panel-footer">
-                                                    <a href="#">Sheets_2016.doc</a>
+                                                <div class="panel-footer text-center">
+                                                    <a href="{{Storage::url($surat->berkas)}}" download>Download Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,13 +73,15 @@
 
                                 </div>
                             </div>
+                            <br>
 
                             <div class="panel-footer text-right">
                                 <div class="btn-group">
-                                    <button class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
-                                    <button class="btn btn-default"><i class="fa fa-arrow-right"></i> Forward</button>
-                                    <button class="btn btn-default"><i class="fa fa-print"></i> Print</button>
-                                    <button class="btn btn-default"><i class="fa fa-trash-o"></i> Remove</button>
+                                    @if($surat->status == "belum diperiksa")
+                                        <a href="/kepala_dinas/process_surat_tugas/{{$surat->id}}" class="btn btn-primary">Process</a>
+                                    @else
+                                        <a class="btn btn-default" href="/kepala_dinas/daftar_surat_tugas"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -116,6 +89,87 @@
                 </div>
             </div>
         </div>
+        <!-- tabs End-->
+
+        <div id="checklist" class="modal modal-adminpro-general default-popup-PrimaryModal fade" role="dialog">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header header-color-modal bg-color-1">
+                            <h4 class="modal-title">Checklist kelayakan</h4>
+                        </div>
+                        <div class="modal-body" style="text-align: left">
+                            @if($surat->process_surat_tugas)
+                            <table>
+                                <tr>
+                                    <th style="padding: 5px">Ceklis Kelayakan</th>
+                                    <th style="padding: 5px">Verifikasi </th>
+                                    <th style="padding: 5px"> Penjelasan</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Isi/Konten</h5>
+                                        <p>berisi semua proses kegiatan berupa semua fakta yang didapatkan pada saat melakukan kegiatan penyuluhan</p>
+                                    </td>
+                                    <td>
+                                        @if($surat->process_surat_tugas->status_isi)
+                                            <span class="fa fa-check text-primary"></span>
+                                        @else
+                                            <span class="fa fa-times text-danger"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p>{{$surat->process_surat_tugas->des_isi}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Berkas surat</h5>
+                                        <p>Berkas surat berformat pdf atau docx</p>
+                                    </td>
+                                    <td>
+                                        @if($surat->process_surat_tugas->status_berkas)
+                                            <span class="fa fa-check text-primary"></span>
+                                        @else
+                                            <span class="fa fa-times text-danger"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <p>{{$surat->process_surat_tugas->des_berkas}}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            @else
+                                <p>Belum Di periksa</p>
+                            @endif
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" data-dismiss="modal">tutup</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- <div id="DangerModalhdbgcl" class="modal modal-adminpro-general FullColor-popup-DangerModal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header header-color-modal bg-color-4">
+                        <h4 class="modal-title">Tolak berkas</h4>
+                    </div>
+                    <div class="modal-body" style="text-align: left">
+                        <h4>Pesan :</h4>
+                        <div class="form-group">
+                            <label class="sr-only" for="f1-latar-belakang">Maksimal 500 kata</label>
+                            <textarea name="f1-latar-belakang" placeholder="Maksimal 500 kata" 
+                            class="f1-latar-belakang form-control" id="f1-latar-belakang" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a data-dismiss="modal" href="#">Cancel</a>
+                        <a href="#">Process</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
         <!-- tabs End-->
 @endsection
 

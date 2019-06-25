@@ -17,4 +17,8 @@ class surat_tugas extends Authenticatable
     public function draft_programa(){
     	return $this->belongsTo(draft_programa::class,"draft_programa_id");
     }
+
+    public function process_surat_tugas(){
+    	return $this->hasOne('App\process_surat_tugas');
+    }
 }

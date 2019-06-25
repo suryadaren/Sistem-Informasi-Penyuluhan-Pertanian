@@ -24,7 +24,7 @@
 
                                 <div class="p-xs h4">
                                     <small class="pull-right">
-                                            {{$draft->created_at}}
+                                            {{$draft->created_at->format('Y-m-d')}}
                                         </small> Draft Programa
 
                                 </div>
@@ -152,7 +152,12 @@
                             <br>
                             <div class="panel-footer text-right">
                                 <div class="btn-group">
+                                    @if($draft->status == "surat tugas diterbitkan")
                                     <a class="btn btn-default" href="/penyuluh/daftar_draft_programa"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    <a class="btn btn-success" href="/penyuluh/detail_surat_tugas/{{$draft->surat_tugas->id}}"> Lihat Surat Tugas<i class="fa fa-arrow-right"></i></a>
+                                    @else
+                                    <a class="btn btn-default" href="/penyuluh/daftar_draft_programa"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

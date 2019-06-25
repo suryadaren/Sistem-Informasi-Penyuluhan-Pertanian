@@ -42,8 +42,7 @@
                                                 <th data-field="name">Penyuluh</th>
                                                 <th data-field="company">Desa</th>
                                                 <th data-field="price">Kecamatan</th>
-                                                <th data-field="date">Tanggal</th>
-                                                <th data-field="task">Status</th>
+                                                <th data-field="date">Tanggal draft dibuat</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
@@ -57,8 +56,7 @@
                                                 <td>{{$draft->user->nama}}</td>
                                                 <td>{{$draft->user->desa}}</td>
                                                 <td>{{$draft->user->kecamatan}}</td>
-                                                <td>{{$draft->created_at}}</td>
-                                                <td>{{$draft->status}}</td>
+                                                <td>{{$draft->created_at->format('Y-m-d')}}</td>
                                                 <td class="datatable-ct"><a href="/pegawai_dinas/buat_surat_tugas/{{$draft->id}}" class="btn btn-primary">Pilih</a></td>
                                             </tr>
                                             @endforeach

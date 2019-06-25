@@ -10,11 +10,11 @@ class laporan_penyuluhan extends Authenticatable
     protected $table = "laporan_penyuluhan";
 
     protected $fillable = [
-        'penyuluh_id', 'tema', 'content', 'foto', 'berkas', 'status', 'created_at', 'updated_at'
+        'draft_programa_id', 'tema', 'content', 'foto', 'berkas','presensi', 'jadwal_penyuluhan', 'dana_terpakai', 'status', 'created_at', 'updated_at'
     ];
 
-    public function user(){
-    	return $this->belongsTo(user::class,"penyuluh_id");
+    public function draft_programa(){
+    	return $this->belongsTo(draft_programa::class,"draft_programa_id");
     }
 
     public function process_laporan_penyuluhan(){

@@ -40,10 +40,13 @@
                                                         <p>Sesuai dengan tema yang sudah di tentukan pada draft programa</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="tema" value="tema">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="tema" value="tema">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_tema" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_tema" cols="30" rows="3">{{old('des_tema')}}</textarea>
+                                                          @if($errors->has('des_tema'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_tema')}} </div>
+                                                          @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -52,10 +55,14 @@
                                                         <p>berisi semua proses kegiatan berupa semua fakta yang didapatkan pada saat melakukan kegiatan penyuluhan</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="isi" value="isi">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="isi" value="isi">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_isi" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_isi" cols="30" rows="3">{{old('des_isi')}}</textarea>
+                                                          @if($errors->has('des_isi'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_isi')}} </div>
+                                                          @endif
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -64,10 +71,14 @@
                                                         <p>Berkas laporan berformat pdf atau docx</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="berkas" value="berkas">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="berkas" value="berkas">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_berkas" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_berkas" cols="30" rows="3">{{old('des_berkas')}}</textarea>
+                                                          @if($errors->has('des_berkas'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_berkas')}} </div>
+                                                          @endif
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -76,10 +87,14 @@
                                                         <p>Foto sudah berformat jpg,jpeg,png,bmp. dan tanpa rekayasa</p>
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-controle" name="foto" value="foto">
+                                                        <input type="checkbox" style="transform: scale(1.5);" class="form-controle" name="foto" value="foto">
                                                     </td>
                                                     <td>
-                                                        <textarea required name="des_foto" cols="30" rows="3"></textarea>
+                                                        <textarea name="des_foto" cols="30" rows="3">{{old('des_foto')}}</textarea>
+                                                          @if($errors->has('des_foto'))
+                                                            <div class="alert alert-danger" role="alert"> {{$errors->first('des_foto')}} </div>
+                                                          @endif
+
                                                     </td>
                                                 </tr>
                                             </table>
